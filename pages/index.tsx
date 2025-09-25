@@ -123,12 +123,6 @@ export default function ClaimsWalletMax() {
     }
   };
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   const handleSelectPaymentMethod = (methodId: string) => {
     setActivePaymentMethod(methodId);
 
