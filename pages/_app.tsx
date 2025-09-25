@@ -12,6 +12,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Juice - Insurance Claims Solutions</title>
       </Head>
+
       <Component {...pageProps} />
     </>
   );
