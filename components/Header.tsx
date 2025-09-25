@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
@@ -36,21 +38,29 @@ export function Header() {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileCategory, setMobileCategory] = useState<string | null>(null);
+  const [preferredLanguage, setPreferredLanguage] = useState("en");
 
   const languages = [
-    { code: "en", name: t("languages.en") },
-    { code: "zh", name: t("languages.zh") },
-    { code: "pt", name: t("languages.pt") },
-    { code: "es", name: t("languages.es") },
-    { code: "fr", name: t("languages.fr") },
-    { code: "ja", name: t("languages.ja") },
+    { code: "en", name: "English" },
+    { code: "zh", name: "中文" },
+    { code: "pt", name: "Português" },
+    { code: "es", name: "Español" },
+    { code: "fr", name: "Français" },
+    { code: "ja", name: "日本語" },
   ];
 
   const handleLanguageChange = async (langCode: string) => {
     await i18n.changeLanguage(langCode);
     localStorage.setItem("preferredLanguage", langCode);
     setIsLanguageOpen(false);
+    window.location.reload();
   };
+
+  // Only access localStorage on the client
+  useEffect(() => {
+    const storedLang = localStorage.getItem("preferredLanguage");
+    if (storedLang) setPreferredLanguage(storedLang);
+  }, []);
 
   const subsidiaries = [
     {
@@ -542,7 +552,7 @@ export function Header() {
                     key={lang.code}
                     onClick={() => handleLanguageChange(lang.code)}
                     className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-800 ${
-                      i18n.language === lang.code
+                      preferredLanguage === lang.code
                         ? "text-blue-600 dark:text-blue-400"
                         : "text-gray-600 dark:text-gray-400"
                     }`}
@@ -657,7 +667,7 @@ export function Header() {
                     key={lang.code}
                     onClick={() => handleLanguageChange(lang.code)}
                     className={`w-full text-left px-4 py-2 rounded-lg ${
-                      i18n.language === lang.code
+                      preferredLanguage === lang.code
                         ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
                         : "hover:bg-gray-50 dark:hover:bg-gray-800"
                     }`}
