@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 import { ChatBubble } from "../components/ChatBubble";
 import {
   Shield,
@@ -28,9 +29,9 @@ import {
   Check,
 } from "lucide-react";
 import { HelpSidebarBase } from "../components/HelpSidebarBase";
-// import { claimsWalletPlusHelp } from "../data/pageHelpContent";
 import { PageHelpButton } from "../components/PageHelpButton";
 import { ClaimsWalletCardPlus } from "../components/ClaimsWalletCardPlus";
+import { claimsWalletPlusHelp } from "../data/pageHelpContent";
 
 export default function ClaimsWalletMax() {
   const { t } = useTranslation();
@@ -450,11 +451,11 @@ export default function ClaimsWalletMax() {
       </div>
 
       {/* Page-specific help sidebar */}
-      {/* <HelpSidebarBase
+      <HelpSidebarBase
         isOpen={isHelpOpen}
         onClose={toggleHelpSidebar}
         content={claimsWalletPlusHelp}
-      /> */}
+      />
 
       <ChatBubble />
 
@@ -810,6 +811,8 @@ export default function ClaimsWalletMax() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <Footer />
     </div>
   );
 }

@@ -19,7 +19,6 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
   }, [theme]);
 
   const handleThemeChange = () => {
-    console.log("🚀 ~ ThemeToggle ~ theme:", theme);
     setIsChanging(true);
     setTheme(theme === "light" ? "dark" : "light");
     setTimeout(() => setIsChanging(false), 300); // Match the transition duration

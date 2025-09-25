@@ -321,7 +321,7 @@ export function HelpSidebarBase({
               variants={contentVariants}
             >
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                Need more help? Contact support at{" "}
+                Need more help? Contact support at <br />
                 <a
                   href="mailto:support@juicefin.com"
                   className="text-blue-600 hover:underline"
