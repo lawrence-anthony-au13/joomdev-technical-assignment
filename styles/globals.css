@@ -139,8 +139,8 @@ body {
   ) !important;
   --chat--message--bot--color: var(--chat--color-dark) !important;
   /* --chat--toggle--background: transparent !important; */
-  --chat--toggle--hover--background: transparent !important;
-  --chat--toggle--active--background: transparent !important;
+  /* --chat--toggle--hover--background: transparent !important; */
+  /* --chat--toggle--active--background: transparent !important; */
   --chat--message--font-size: 0.875rem !important;
   --chat--heading--font-size: 1.25rem !important;
   --chat--subtitle--font-size: 0.875rem !important;
