@@ -12,16 +12,36 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
   const [theme, setTheme] = React.useState<"light" | "dark">("light");
   const [isChanging, setIsChanging] = React.useState(false);
 
+  // Load theme from localStorage or system preference
   React.useEffect(() => {
-    const root = window.document.documentElement;
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
+
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.documentElement.classList.add(savedTheme);
+    } else {
+      // Default to system preference if nothing saved
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      const defaultTheme = prefersDark ? "dark" : "light";
+      setTheme(defaultTheme);
+      document.documentElement.classList.add(defaultTheme);
+    }
+  }, []);
+
+  // Update theme when changed
+  React.useEffect(() => {
+    const root = document.documentElement;
     root.classList.remove("light", "dark");
     root.classList.add(theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const handleThemeChange = () => {
     setIsChanging(true);
-    setTheme(theme === "light" ? "dark" : "light");
-    setTimeout(() => setIsChanging(false), 300); // Match the transition duration
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTimeout(() => setIsChanging(false), 300); // Match transition duration
   };
 
   return (

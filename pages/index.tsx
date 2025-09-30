@@ -32,6 +32,7 @@ import { HelpSidebarBase } from "../components/HelpSidebarBase";
 import { PageHelpButton } from "../components/PageHelpButton";
 import { ClaimsWalletCardPlus } from "../components/ClaimsWalletCardPlus";
 import { claimsWalletPlusHelp } from "../data/pageHelpContent";
+import { cn } from "@/lib/utils";
 
 export default function ClaimsWalletMax() {
   const { t } = useTranslation();
@@ -101,6 +102,14 @@ export default function ClaimsWalletMax() {
       color: "from-amber-600 to-orange-600",
     },
   ];
+
+  const colorClasses: Record<string, string> = {
+    "direct-card":
+      "bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400",
+    ach: "bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400",
+    default:
+      "bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400",
+  };
 
   const toggleHelpSidebar = () => {
     setIsHelpOpen(!isHelpOpen);
@@ -290,31 +299,10 @@ export default function ClaimsWalletMax() {
                   >
                     <div className="flex items-center gap-3 mb-1">
                       <div
-                        className={`p-2 rounded-full bg-${
-                          method.id === "direct-card"
-                            ? "green"
-                            : method.id === "ach"
-                            ? "purple"
-                            : "amber"
-                        }-50 dark:bg-${
-                          method.id === "direct-card"
-                            ? "green"
-                            : method.id === "ach"
-                            ? "purple"
-                            : "amber"
-                        }-900/30 text-${
-                          method.id === "direct-card"
-                            ? "green"
-                            : method.id === "ach"
-                            ? "purple"
-                            : "amber"
-                        }-600 dark:text-${
-                          method.id === "direct-card"
-                            ? "green"
-                            : method.id === "ach"
-                            ? "purple"
-                            : "amber"
-                        }-400`}
+                        className={cn(
+                          "p-2 rounded-full",
+                          colorClasses[method.id] || colorClasses.default
+                        )}
                       >
                         <method.icon className="h-5 w-5" />
                       </div>
@@ -502,12 +490,13 @@ export default function ClaimsWalletMax() {
 
               <button
                 onClick={handleVerifyOTP}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-medium hover:shadow-lg transition-all"
+                className={cn(
+                  "w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all",
+                  acceptedTerms
+                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg"
+                    : "bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-700 dark:text-gray-400"
+                )}
                 disabled={!acceptedTerms}
-                style={{
-                  opacity: acceptedTerms ? 1 : 0.5,
-                  cursor: acceptedTerms ? "pointer" : "not-allowed",
-                }}
               >
                 Verify Code
                 <ArrowRight className="h-5 w-5" />
@@ -760,14 +749,14 @@ export default function ClaimsWalletMax() {
                           parseFloat(transferAmount) <= 0 ||
                           parseFloat(transferAmount) > walletData.balance
                         }
-                        className={`w-full flex items-center justify-center gap-2 py-3 rounded-lg font-medium transition-all 
-                          ${
-                            !transferAmount ||
+                        className={cn(
+                          "w-full flex items-center justify-center gap-2 py-3 rounded-lg font-medium transition-all",
+                          !transferAmount ||
                             parseFloat(transferAmount) <= 0 ||
                             parseFloat(transferAmount) > walletData.balance
-                              ? "bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-700 dark:text-gray-400"
-                              : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg"
-                          }`}
+                            ? "bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-700 dark:text-gray-400"
+                            : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg"
+                        )}
                       >
                         <span>Transfer Funds</span>
                         <ArrowRight className="h-5 w-5" />
