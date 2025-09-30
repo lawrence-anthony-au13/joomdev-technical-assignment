@@ -1,6 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Wallet, RefreshCw, CheckCircle2, ArrowRight } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Wallet, RefreshCw, CheckCircle2, ArrowRight } from "lucide-react";
+import { cn } from "../lib/utils";
 
 interface ClaimsWalletCardPlusProps {
   balance: number;
@@ -11,13 +12,16 @@ interface ClaimsWalletCardPlusProps {
 
 export function ClaimsWalletCardPlus({
   balance,
-  claimNumber = 'CLM-2024-0078',
+  claimNumber = "CLM-2024-0078",
   onRefresh = () => {},
-  className = ''
+  className = "",
 }: ClaimsWalletCardPlusProps) {
   return (
-    <motion.div 
-      className={`bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-xl p-7 text-white relative overflow-hidden ${className}`}
+    <motion.div
+      className={cn(
+        "bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-xl p-7 text-white relative overflow-hidden",
+        className
+      )}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -41,7 +45,9 @@ export function ClaimsWalletCardPlus({
 
       <div className="flex flex-col items-center justify-center py-6">
         <div className="text-white/80 text-lg mb-2">Available Balance</div>
-        <div className="text-6xl font-bold mb-3">${balance.toLocaleString()}</div>
+        <div className="text-6xl font-bold mb-3">
+          ${balance.toLocaleString()}
+        </div>
         <div className="text-white/70 flex items-center gap-2">
           <CheckCircle2 className="h-5 w-5" />
           <span>Funds ready for immediate use</span>
@@ -51,11 +57,11 @@ export function ClaimsWalletCardPlus({
       <div className="flex justify-center">
         <motion.div
           className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center"
-          animate={{ 
+          animate={{
             scale: [1, 1.1, 1],
             opacity: [0.7, 1, 0.7],
           }}
-          transition={{ 
+          transition={{
             repeat: Infinity,
             duration: 2,
             ease: "easeInOut",

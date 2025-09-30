@@ -24,6 +24,8 @@ import { PageHelpButton } from "../components/PageHelpButton";
 import { ClaimsWalletCardPlus } from "../components/ClaimsWalletCardPlus";
 import { claimsWalletPlusHelp } from "../data/pageHelpContent";
 import { cn } from "../lib/utils";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function ClaimsWalletMax() {
   const [showCardDetails, setShowCardDetails] = useState(false);
@@ -185,10 +187,13 @@ export default function ClaimsWalletMax() {
           {/* Hero Section */}
           <div className="max-w-4xl mx-auto text-center mb-14">
             <div className="mb-8 flex justify-center">
-              <img
+              <Image
                 src="/Juice-2024-Logo-2000x800.png"
                 alt="Juice Financial"
-                className="h-16"
+                width={2000}
+                height={800}
+                className="h-16 w-auto"
+                priority
               />
             </div>
             <h1 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
@@ -229,17 +234,22 @@ export default function ClaimsWalletMax() {
                   {/* Card visual */}
                   <div className="w-[200px] h-[120px] rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 p-4 flex-shrink-0 shadow-lg relative">
                     <div className="absolute top-2 left-2">
-                      <img
+                      <Image
                         src="/Juice-2024-Logo-2000x800.png"
                         alt="Juice Financial"
-                        className="h-6"
+                        width={2000}
+                        height={800}
+                        className="h-6 w-auto"
+                        priority
                       />
                     </div>
                     <div className="absolute bottom-2 right-2">
-                      <img
+                      <Image
                         src="https://www.mastercard.com/content/dam/public/mastercardcom/na/us/en/homepage/Home/mc-logo-52.svg"
                         alt="Mastercard"
-                        className="h-6"
+                        width={52}
+                        height={52}
+                        className="h-6 w-auto"
                       />
                     </div>
                     <div className="absolute bottom-2 left-2 text-[10px] font-mono text-white/70">
@@ -505,14 +515,14 @@ export default function ClaimsWalletMax() {
                 />
                 <label htmlFor="terms">
                   I accept the{" "}
-                  <a
+                  <Link
                     href="https://juicefin.com/wp-content/uploads/2024/10/CLL-09272024-001.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
                   >
                     Cardholder Terms & Conditions
-                  </a>
+                  </Link>
                 </label>
               </div>
             </div>

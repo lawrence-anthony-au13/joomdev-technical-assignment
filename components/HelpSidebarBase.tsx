@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, HelpCircle, ChevronRight, ChevronLeft } from "lucide-react";
+import Link from "next/link";
 
 interface HelpItem {
   title: string;
@@ -322,12 +323,12 @@ export function HelpSidebarBase({
             >
               <p className="text-sm text-gray-500 dark:text-gray-400">
                 Need more help? Contact support at <br />
-                <a
+                <Link
                   href="mailto:support@juicefin.com"
                   className="text-blue-600 hover:underline"
                 >
                   support@juicefin.com
-                </a>
+                </Link>
               </p>
             </motion.div>
           </motion.div>

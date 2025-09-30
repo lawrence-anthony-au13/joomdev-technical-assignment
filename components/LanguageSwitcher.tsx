@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Globe } from "lucide-react";
+import { cn } from "../lib/utils";
 
 export function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,11 +48,12 @@ export function LanguageSwitcher() {
             <button
               key={lang.code}
               onClick={() => handleLanguageChange(lang.code)}
-              className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-800 ${
+              className={cn(
+                "w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-800",
                 preferredLanguage === lang.code
                   ? "text-blue-600 dark:text-blue-400"
                   : "text-gray-600 dark:text-gray-400"
-              }`}
+              )}
             >
               {lang.name}
             </button>

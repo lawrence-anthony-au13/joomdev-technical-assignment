@@ -6,35 +6,24 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
 import {
   ChevronDown,
-  Users,
   CreditCard,
-  UserCheck,
   FileText,
-  Link,
+  Link as LinkIcon,
   Menu,
   X,
-  Shield,
-  Briefcase,
-  Building,
   Building2,
-  Phone,
-  Power,
-  UserCircle,
   Globe,
-  UserCircle2,
   Wallet,
   Home,
   DollarSign,
-  Landmark,
 } from "lucide-react";
+import { cn } from "../lib/utils";
+import Image from "next/image";
+import Link from "next/link";
 
 export function Header() {
   const { t, i18n } = useTranslation();
   const [isPaymentSolutionsOpen, setIsPaymentSolutionsOpen] = useState(false);
-  const [isAboutOpen, setIsAboutOpen] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isMoreOpen, setIsMoreOpen] = useState(false);
-  const [isCompaniesOpen, setIsCompaniesOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileCategory, setMobileCategory] = useState<string | null>(null);
@@ -61,261 +50,6 @@ export function Header() {
     const storedLang = localStorage.getItem("preferredLanguage");
     if (storedLang) setPreferredLanguage(storedLang);
   }, []);
-
-  const subsidiaries = [
-    {
-      name: t("home.subsidiaries.cica.name"),
-      logo: "/CICA-Life-1.svg",
-      title: t("home.subsidiaries.cica.title"),
-      description: t("home.subsidiaries.cica.description"),
-      href: "/cica-life",
-    },
-    {
-      name: t("home.subsidiaries.citizens.name"),
-      logo: "/CICA-LOA-2.svg",
-      title: t("home.subsidiaries.citizens.title"),
-      description: t("home.subsidiaries.citizens.description"),
-      href: "https://citizensnational.com",
-    },
-    {
-      name: t("home.subsidiaries.security.name"),
-      logo: "/SPLIC-Logo-Color-NC-3.svg",
-      title: t("home.subsidiaries.security.title"),
-      description: t("home.subsidiaries.security.description"),
-      href: "https://securityplanlife.com",
-    },
-  ];
-
-  const aboutItems = [
-    {
-      title: "Board Of Directors",
-      description: "Meet our seasoned Fintech BoD.",
-      icon: Users,
-      href: "#board",
-    },
-    {
-      title: "CICA Leadership",
-      description:
-        "Meet our Founder-led leadership with deep expertise across Insurance & Technology.",
-      icon: Briefcase,
-      href: "#leadership",
-    },
-    {
-      title: "Jobs",
-      description:
-        "CICA Life is always excited to hear from top talent - reach out.",
-      icon: Building,
-      href: "#jobs",
-    },
-    {
-      title: "Contacts For Clients",
-      description: "Enterprise & Business Client Contacts",
-      icon: Phone,
-      href: "#client-contacts",
-    },
-    {
-      title: "Contacts For Policyholders",
-      description: "Account Holders & Policy Services",
-      icon: Phone,
-      href: "#policyholder-contacts",
-    },
-  ];
-
-  const loginOptions = [
-    {
-      title: "Policy Hub",
-      description: "Access your policy details and documents",
-      icon: Shield,
-      href: "/policy-hub",
-    },
-    {
-      title: "CICA Wallet",
-      description: "Access your claims and payment wallet",
-      icon: Wallet,
-      href: "/claims-wallet",
-    },
-    {
-      title: "Shareholder Login",
-      description: "Access shareholder portal and documents",
-      icon: Building,
-      href: "/login/shareholder",
-    },
-    {
-      title: "CICA Life Policy Holder Login",
-      description: "Access your policy information",
-      icon: UserCircle2,
-      href: "/login/policyholder",
-    },
-    {
-      title: "My Security Plan Login",
-      description: "Access your security plan",
-      icon: Shield,
-      href: "/login/security-plan",
-    },
-    {
-      title: "CICA Life IC Portal",
-      description: "Insurance company portal access",
-      icon: Building,
-      href: "/login/ic-portal",
-    },
-    {
-      title: "Domestic Agent Portal",
-      description: "Portal for domestic agents",
-      icon: UserCircle2,
-      href: "/login/domestic-agent",
-    },
-    {
-      title: "Security Plan Agent Portal",
-      description: "Portal for security plan agents",
-      icon: Shield,
-      href: "/login/security-agent",
-    },
-  ];
-
-  const moreOptions = [
-    {
-      title: "Online Account Setup",
-      description:
-        "Create a username and password to access our CICA Mobile or User Apps and access your policy details.",
-      icon: UserCircle2,
-      href: "/cards/setup",
-    },
-    {
-      title: "Online Portal",
-      description:
-        "To access your account information, policies and other online features, click here.",
-      icon: Building,
-      href: "/cards/online-banking",
-    },
-    {
-      title: "Mobile App",
-      description:
-        "To download and start using our full-featured app designed for ease of use, start here.",
-      icon: UserCircle2,
-      href: "/cards/mobile-banking",
-    },
-    {
-      title: "Policyholder Support",
-      description:
-        "For all policyholder support, please call 1-855-687-2114​ or click here.",
-      icon: Phone,
-      href: "/cards/support",
-    },
-    {
-      title: "Policyholder Benefits",
-      description:
-        "For all Policyholder related information, agreements and links, start here.",
-      icon: Shield,
-      href: "/cards/benefits",
-    },
-    {
-      title: "Policy Balance",
-      description:
-        "For all Policyholder related information, agreements and links, start here.",
-      icon: CreditCard,
-      href: "/cards/rewards",
-    },
-    {
-      title: "Activate Policy",
-      description:
-        "If you received a CICA Life policy and need to activate it, start here.",
-      icon: Power,
-      href: "/cards/activate",
-    },
-    {
-      title: "Policyholder Portal",
-      description:
-        "For all Policyholder related information, agreements and links, start here.",
-      icon: UserCircle,
-      href: "/cards/portal",
-    },
-  ];
-
-  // Mega Menu Structure for Demo Pages
-  const megaMenuCategories = [
-    {
-      title: "Incoming Payment Solutions",
-      description: "Process premium payments and manage policy information",
-      items: [
-        {
-          title: "Premium Pay - Agent",
-          description: "Process premium payments for insurance agents",
-          icon: CreditCard,
-          href: "/premium-pay-agent",
-        },
-        {
-          title: "Premium Pay - Client",
-          description: "Pay your insurance premium securely and conveniently",
-          icon: CreditCard,
-          href: "/premium-pay-client",
-        },
-        {
-          title: "Policy Hub",
-          description: "Access and manage your policy details and documents",
-          icon: FileText,
-          href: "/policy-hub",
-        },
-      ],
-    },
-    {
-      title: "Outgoing Payment Solutions",
-      description:
-        "Process payments to claimants, partners, and service providers",
-      items: [
-        {
-          title: t("header.insurance.link.title"),
-          description:
-            "Create a one-time payment link with customizable options",
-          icon: Link,
-          href: "/pay-link",
-        },
-        {
-          title: t("header.insurance.partners.title"),
-          description:
-            "Process payments to partners, agents, and service providers",
-          icon: Building2,
-          href: "/pay-partners",
-        },
-        {
-          title: t("header.insurance.claim.title"),
-          description: "Pay claims instantly with flexible payment methods",
-          icon: CreditCard,
-          href: "/claim-payment-lander",
-        },
-      ],
-    },
-    {
-      title: "Claims Wallet",
-      description: "Manage claims funds and payment options",
-      items: [
-        {
-          title: "Claimant Verification",
-          description: "Verify your identity to access claims and payments",
-          icon: UserCheck,
-          href: "/claimant-verification",
-        },
-        {
-          title: "Virtual Claims Card",
-          description: "Issue instant virtual cards for claims payments",
-          icon: CreditCard,
-          href: "/virtual-claims-card",
-        },
-        {
-          title: "Claims Wallet",
-          description: "Access your claims and payment wallet",
-          icon: Wallet,
-          href: "/claims-wallet",
-        },
-        {
-          title: "Claims Wallet Plus",
-          description:
-            "Enhanced claims wallet with virtual card and advanced features",
-          icon: Wallet,
-          href: "/claims-wallet-plus",
-        },
-      ],
-    },
-  ];
 
   // Payment Solutions mega menu categories
   const paymentSolutionsCategories = [
@@ -368,7 +102,7 @@ export function Header() {
           title: "Pay Link",
           description:
             "Create a one-time payment link with customizable options",
-          icon: Link,
+          icon: LinkIcon,
           href: "/pay-link",
         },
         {
@@ -431,18 +165,22 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 dark:border-gray-800 bg-[#f9fafb]/80 dark:bg-gray-950/80 backdrop-blur-sm">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex-none">
-          <a href="/" className="block">
-            <img
+          <Link href="/" className="block">
+            <Image
               src="/Juice-2024-Logo-2000x800.png"
               alt="Juice"
-              className="h-8 hidden dark:block"
+              width={2000}
+              height={800}
+              className="h-8 hidden dark:block w-auto"
             />
-            <img
+            <Image
               src="/Juice-2024-Logo-2000x800.png"
               alt="Juice"
-              className="h-8 block dark:hidden"
+              width={2000}
+              height={800}
+              className="h-8 block dark:hidden w-auto"
             />
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
@@ -482,7 +220,7 @@ export function Header() {
                             const Icon = item.icon;
                             return (
                               <React.Fragment key={itemIdx}>
-                                <a
+                                <Link
                                   href={item.href}
                                   className="flex items-start gap-4 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                                 >
@@ -505,7 +243,7 @@ export function Header() {
                                       {item.description}
                                     </p>
                                   </div>
-                                </a>
+                                </Link>
                                 {item.divider && (
                                   <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
                                 )}
@@ -522,12 +260,12 @@ export function Header() {
 
             {/* FAQs Link (formerly RFP Link) */}
             <div className="relative">
-              <a
+              <Link
                 href="/rfp"
                 className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
               >
                 FAQs
-              </a>
+              </Link>
             </div>
           </div>
         </nav>
@@ -551,11 +289,13 @@ export function Header() {
                   <button
                     key={lang.code}
                     onClick={() => handleLanguageChange(lang.code)}
-                    className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-800 ${
+                    className={cn(
+                      "w-full text-left px-4 py-2 text-sm transition-colors",
+                      "hover:bg-gray-50 dark:hover:bg-gray-800",
                       preferredLanguage === lang.code
                         ? "text-blue-600 dark:text-blue-400"
                         : "text-gray-600 dark:text-gray-400"
-                    }`}
+                    )}
                   >
                     {lang.name}
                   </button>
@@ -603,9 +343,10 @@ export function Header() {
                     >
                       <span className="font-medium">{category.title}</span>
                       <ChevronDown
-                        className={`h-4 w-4 transition-transform ${
-                          mobileCategory === category.title ? "rotate-180" : ""
-                        }`}
+                        className={cn(
+                          "h-4 w-4 transition-transform",
+                          mobileCategory === category.title && "rotate-180"
+                        )}
                       />
                     </button>
 
@@ -613,17 +354,18 @@ export function Header() {
                       <div className="mt-2 ml-4 space-y-2">
                         {category.items.map((item, itemIdx) => (
                           <React.Fragment key={itemIdx}>
-                            <a
+                            <Link
                               href={item.href}
                               className="block px-4 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"
                             >
                               <div className="flex items-center gap-2">
                                 <div
-                                  className={`p-1.5 rounded-md ${
+                                  className={cn(
+                                    "p-1.5 rounded-md",
                                     item.isSummary
                                       ? "bg-green-50 dark:bg-green-950 text-green-600 dark:text-green-400"
                                       : "bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400"
-                                  }`}
+                                  )}
                                 >
                                   <item.icon className="h-4 w-4" />
                                 </div>
@@ -632,7 +374,7 @@ export function Header() {
                               <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                                 {item.description}
                               </div>
-                            </a>
+                            </Link>
                             {item.divider && (
                               <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
                             )}
@@ -646,7 +388,7 @@ export function Header() {
 
               {/* FAQs Link (formerly RFP Link) */}
               <div className="space-y-2">
-                <a
+                <Link
                   href="/rfp"
                   className="block px-4 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
@@ -654,7 +396,7 @@ export function Header() {
                   <div className="text-sm text-gray-600 dark:text-gray-400">
                     Frequently Asked Questions
                   </div>
-                </a>
+                </Link>
               </div>
 
               {/* Language Selector */}
@@ -666,11 +408,12 @@ export function Header() {
                   <button
                     key={lang.code}
                     onClick={() => handleLanguageChange(lang.code)}
-                    className={`w-full text-left px-4 py-2 rounded-lg ${
+                    className={cn(
+                      "w-full text-left px-4 py-2 rounded-lg",
                       preferredLanguage === lang.code
                         ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
                         : "hover:bg-gray-50 dark:hover:bg-gray-800"
-                    }`}
+                    )}
                   >
                     {lang.name}
                   </button>
