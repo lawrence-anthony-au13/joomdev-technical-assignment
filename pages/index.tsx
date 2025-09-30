@@ -32,7 +32,7 @@ import { HelpSidebarBase } from "../components/HelpSidebarBase";
 import { PageHelpButton } from "../components/PageHelpButton";
 import { ClaimsWalletCardPlus } from "../components/ClaimsWalletCardPlus";
 import { claimsWalletPlusHelp } from "../data/pageHelpContent";
-import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils";
 
 export default function ClaimsWalletMax() {
   const { t } = useTranslation();
