@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
@@ -9,23 +8,15 @@ import { ChatBubble } from "../components/ChatBubble";
 import {
   Shield,
   Clock,
-  CheckCircle2,
   ArrowRight,
   CreditCard,
-  Copy,
   X,
-  RefreshCw,
-  Lock,
   Globe,
   KeyRound,
   Wallet,
-  Bell,
-  FileText,
   DollarSign,
-  Building2,
   MailCheck,
   Landmark,
-  AlertTriangle,
   Check,
 } from "lucide-react";
 import { HelpSidebarBase } from "../components/HelpSidebarBase";
@@ -35,16 +26,12 @@ import { claimsWalletPlusHelp } from "../data/pageHelpContent";
 import { cn } from "../lib/utils";
 
 export default function ClaimsWalletMax() {
-  const { t } = useTranslation();
   const [showCardDetails, setShowCardDetails] = useState(false);
   const [showOTPModal, setShowOTPModal] = useState(false);
   const [otp, setOtp] = useState("");
   const [otpError, setOtpError] = useState("");
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
-  const [activePaymentMethod, setActivePaymentMethod] = useState<string | null>(
-    null
-  );
   const [transferAmount, setTransferAmount] = useState("");
   const [transferInProgress, setTransferInProgress] = useState(false);
   const [transferSuccess, setTransferSuccess] = useState(false);
@@ -133,8 +120,6 @@ export default function ClaimsWalletMax() {
   };
 
   const handleSelectPaymentMethod = (methodId: string) => {
-    setActivePaymentMethod(methodId);
-
     const method = paymentMethods.find((m) => m.id === methodId);
     if (method) {
       setModalPaymentMethod(method.name);

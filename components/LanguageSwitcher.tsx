@@ -1,12 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { Globe } from "lucide-react";
 
 export function LanguageSwitcher() {
-  // const { t, i18n } = useTranslation();
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [preferredLanguage, setPreferredLanguage] = useState("en");
 
   const languages = [
@@ -18,17 +16,14 @@ export function LanguageSwitcher() {
     { code: "ja", name: "日本語" },
   ];
 
-  // Only access localStorage on the client
   useEffect(() => {
     const storedLang = localStorage.getItem("preferredLanguage");
     if (storedLang) setPreferredLanguage(storedLang);
   }, []);
 
-  const handleLanguageChange = async (langCode: string) => {
-    // await i18n.changeLanguage(langCode);
+  const handleLanguageChange = (langCode: string) => {
     localStorage.setItem("preferredLanguage", langCode);
     setIsOpen(false);
-    // Force a page reload to ensure all components re-render with new translations
     window.location.reload();
   };
 
@@ -37,7 +32,7 @@ export function LanguageSwitcher() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         onBlur={() => setTimeout(() => setIsOpen(false), 200)}
-        className="flex items-center gap-2 text-sm text-gray-700 hover:text-gray-900"
+        className="flex items-center gap-2 text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
       >
         <Globe className="h-4 w-4" />
         <span>
@@ -47,7 +42,7 @@ export function LanguageSwitcher() {
       </button>
 
       {isOpen && (
-        <div className="absolute bottom-full left-0 mb-2 w-40 bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-800 py-2">
+        <div className="absolute bottom-full left-0 mb-2 w-40 bg-white dark:bg-gray-950 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50">
           {languages.map((lang) => (
             <button
               key={lang.code}
