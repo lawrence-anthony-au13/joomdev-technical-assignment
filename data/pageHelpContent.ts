@@ -50,3 +50,10 @@ export const claimsWalletPlusHelp = {
     },
   ],
 };
+
+export const footerLinks = [
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/legal", label: "Terms of Service" },
+  { href: "/cookie-policy", label: "Cookie Policy" },
+  { href: "/sitemap", label: "Sitemap" },
+];
