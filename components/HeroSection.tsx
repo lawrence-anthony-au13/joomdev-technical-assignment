@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { Label } from "./Label";
 
 export const HeroSection = () => {
   return (
@@ -16,13 +17,19 @@ export const HeroSection = () => {
           priority
         />
       </div>
-      <h1 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+      <Label
+        as="h1"
+        className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600"
+      >
         Claims Wallet Max
-      </h1>
-      <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+      </Label>
+      <Label
+        as="p"
+        className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
+      >
         Access your funds instantly and choose how you want to receive your
         payment. Enhanced features with maximum flexibility.
-      </p>
+      </Label>
     </div>
   );
 };

@@ -18,6 +18,7 @@ import { VirtualCard } from "../components/VirtualCard";
 import { OTPVerificationModal } from "../components/OTPVerificationModal";
 import { cn } from "../lib/utils";
 import { paymentMethods, transactions } from "../data/pageHelpContent";
+import { Label } from "../components/Label";
 
 export default function ClaimsWalletMax() {
   const [showCardDetails, setShowCardDetails] = useState(false);
@@ -146,9 +147,9 @@ export default function ClaimsWalletMax() {
             initial="hidden"
             animate="visible"
           >
-            <h2 className="text-2xl font-bold mb-8 text-center">
+            <Label as="h2" className="text-2xl font-bold mb-8 text-center">
               Select Payment Method
-            </h2>
+            </Label>
 
             <div className="grid md:grid-cols-2 gap-6">
               {/* Virtual Card - Primary Option (Largest, Most Prominent) */}
@@ -174,11 +175,16 @@ export default function ClaimsWalletMax() {
                       >
                         <method.icon className="h-5 w-5" />
                       </div>
-                      <h3 className="font-bold">{method.name}</h3>
+                      <Label as="h3" className="font-bold">
+                        {method.name}
+                      </Label>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">
+                    <Label
+                      as="p"
+                      className="text-gray-600 dark:text-gray-400 text-sm"
+                    >
                       {method.description}
-                    </p>
+                    </Label>
                     <div className="mt-auto flex items-center justify-between">
                       <span className="text-xs text-gray-500 flex items-center gap-1">
                         <Clock className="h-3 w-3" />

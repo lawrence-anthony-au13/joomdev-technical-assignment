@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { CreditCard, ArrowRight } from "lucide-react";
+import { Label } from "./Label";
 
 interface VirtualCardProps {
   onSelect: () => void;
@@ -45,7 +46,9 @@ export const VirtualCard: React.FC<VirtualCardProps> = ({ onSelect }) => {
           <div className="p-2 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
             <CreditCard className="h-6 w-6" />
           </div>
-          <h3 className="text-xl font-bold">Virtual Mastercard</h3>
+          <Label as="h3" className="text-xl font-bold">
+            Virtual Mastercard
+          </Label>
           <div className="ml-auto">
             <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400">
               INSTANT

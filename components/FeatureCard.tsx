@@ -1,5 +1,6 @@
 import React from "react";
 import { LucideIcon } from "lucide-react";
+import { Label } from "./Label";
 
 interface FeatureCardProps {
   icon: LucideIcon;
@@ -23,7 +24,9 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
       >
         <Icon className="h-6 w-6" />
       </div>
-      <h3 className="text-lg font-semibold mb-2">{title}</h3>
+      <Label as="h3" className="text-lg font-semibold mb-2">
+        {title}
+      </Label>
       <p className="text-gray-600 dark:text-gray-400">{description}</p>
     </div>
   );

@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, HelpCircle, ChevronRight, ChevronLeft } from "lucide-react";
 import Link from "next/link";
+import { Label } from "./Label";
 
 interface HelpItem {
   title: string;
@@ -229,7 +230,9 @@ export function HelpSidebarBase({
             >
               <div className="flex items-center gap-2">
                 <HelpCircle className="h-5 w-5 text-blue-600" />
-                <h2 className="text-lg font-semibold">Help & Information</h2>
+                <Label as="h2" className="text-lg font-semibold">
+                  Help & Information
+                </Label>
               </div>
               <div className="flex items-center gap-2">
                 <button
@@ -265,7 +268,9 @@ export function HelpSidebarBase({
               variants={contentVariants}
             >
               <motion.div className="mb-6" variants={itemVariants}>
-                <h3 className="text-xl font-bold mb-2">{content.title}</h3>
+                <Label as="h3" className="text-xl font-bold mb-2">
+                  {content.title}
+                </Label>
                 <p className="text-gray-600 dark:text-gray-400">
                   {content.description}
                 </p>
@@ -278,9 +283,12 @@ export function HelpSidebarBase({
                     className="mb-8"
                     variants={itemVariants}
                   >
-                    <h4 className="text-lg font-semibold mb-3 text-blue-600 dark:text-blue-400">
+                    <Label
+                      as="h4"
+                      className="text-lg font-semibold mb-3 text-blue-600 dark:text-blue-400"
+                    >
                       {section.title}
-                    </h4>
+                    </Label>
                     <div className="space-y-4">
                       {section.items.map((item, itemIndex) => (
                         <motion.div
@@ -288,7 +296,9 @@ export function HelpSidebarBase({
                           className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg"
                           variants={itemVariants}
                         >
-                          <h5 className="font-medium mb-2">{item.title}</h5>
+                          <Label as="h5" className="font-medium mb-2">
+                            {item.title}
+                          </Label>
                           <p className="text-gray-600 dark:text-gray-400 text-sm">
                             {item.description}
                           </p>
@@ -306,10 +316,15 @@ export function HelpSidebarBase({
                       className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg"
                       variants={itemVariants}
                     >
-                      <h4 className="font-medium mb-2">{feature.title}</h4>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm">
+                      <Label as="h4" className="font-medium mb-2">
+                        {feature.title}
+                      </Label>
+                      <Label
+                        as="p"
+                        className="text-gray-600 dark:text-gray-400 text-sm"
+                      >
                         {feature.description}
-                      </p>
+                      </Label>
                     </motion.div>
                   ))}
                 </motion.div>

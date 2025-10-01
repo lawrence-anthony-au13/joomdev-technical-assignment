@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Wallet, RefreshCw, CheckCircle2, ArrowRight } from "lucide-react";
 import { cn } from "../lib/utils";
+import { Label } from "./Label";
 
 interface ClaimsWalletCardPlusProps {
   balance: number;
@@ -30,8 +31,12 @@ export function ClaimsWalletCardPlus({
         <div className="flex items-center gap-3">
           <Wallet className="h-10 w-10" />
           <div>
-            <h2 className="text-3xl font-bold">Your Claims Wallet</h2>
-            <p className="text-white/80">Claim #{claimNumber}</p>
+            <Label as="h2" className="text-3xl font-bold">
+              Your Claims Wallet
+            </Label>
+            <Label as="p" className="text-white/80">
+              Claim #{claimNumber}
+            </Label>
           </div>
         </div>
         <button

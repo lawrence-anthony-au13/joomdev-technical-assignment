@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { cn } from "../lib/utils";
 import { paymentMethods } from "../data/pageHelpContent";
+import { Label } from "./Label";
 
 interface PaymentTransferModalProps {
   show: boolean;
@@ -63,11 +64,11 @@ export function PaymentTransferModal({
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
                     <Wallet className="h-6 w-6 text-blue-600" />
-                    <h3 className="text-xl font-bold">
+                    <Label as="h3" className="text-xl font-bold">
                       {transferInProgress
                         ? "Processing..."
                         : `Transfer to ${modalPaymentMethod}`}
-                    </h3>
+                    </Label>
                   </div>
                   {!transferInProgress && (
                     <button
@@ -112,9 +113,12 @@ export function PaymentTransferModal({
                     </div>
 
                     <div className="mb-6">
-                      <label className="block text-sm font-medium mb-2">
+                      <Label
+                        as="label"
+                        className="block text-sm font-medium mb-2"
+                      >
                         Transfer Amount
-                      </label>
+                      </Label>
                       <div className="relative">
                         <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
                           $
@@ -135,9 +139,12 @@ export function PaymentTransferModal({
                     {modalPaymentMethod === paymentMethods[2].name && (
                       <div className="space-y-4 mb-6">
                         <div>
-                          <label className="block text-sm font-medium mb-2">
+                          <Label
+                            as="label"
+                            className="block text-sm font-medium mb-2"
+                          >
                             Bank Name
-                          </label>
+                          </Label>
                           <input
                             type="text"
                             className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700"
@@ -146,9 +153,12 @@ export function PaymentTransferModal({
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <label className="block text-sm font-medium mb-2">
+                            <Label
+                              as="label"
+                              className="block text-sm font-medium mb-2"
+                            >
                               Routing Number
-                            </label>
+                            </Label>
                             <input
                               type="text"
                               className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700"
@@ -156,9 +166,12 @@ export function PaymentTransferModal({
                             />
                           </div>
                           <div>
-                            <label className="block text-sm font-medium mb-2">
+                            <Label
+                              as="label"
+                              className="block text-sm font-medium mb-2"
+                            >
                               Account Number
-                            </label>
+                            </Label>
                             <input
                               type="text"
                               className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700"
@@ -172,9 +185,12 @@ export function PaymentTransferModal({
                     {modalPaymentMethod === paymentMethods[1].name && (
                       <div className="space-y-4 mb-6">
                         <div>
-                          <label className="block text-sm font-medium mb-2">
+                          <Label
+                            as="label"
+                            className="block text-sm font-medium mb-2"
+                          >
                             Card Number
-                          </label>
+                          </Label>
                           <input
                             type="text"
                             className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700"
@@ -183,9 +199,12 @@ export function PaymentTransferModal({
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <label className="block text-sm font-medium mb-2">
+                            <Label
+                              as="label"
+                              className="block text-sm font-medium mb-2"
+                            >
                               Expiration Date
-                            </label>
+                            </Label>
                             <input
                               type="text"
                               className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700"
@@ -193,9 +212,12 @@ export function PaymentTransferModal({
                             />
                           </div>
                           <div>
-                            <label className="block text-sm font-medium mb-2">
+                            <Label
+                              as="label"
+                              className="block text-sm font-medium mb-2"
+                            >
                               Zip Code
-                            </label>
+                            </Label>
                             <input
                               type="text"
                               className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700"
@@ -209,9 +231,12 @@ export function PaymentTransferModal({
                     {modalPaymentMethod === paymentMethods[3].name && (
                       <div className="space-y-4 mb-6">
                         <div>
-                          <label className="block text-sm font-medium mb-2">
+                          <Label
+                            as="label"
+                            className="block text-sm font-medium mb-2"
+                          >
                             Mailing Address
-                          </label>
+                          </Label>
                           <textarea
                             className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700"
                             placeholder="Enter your mailing address"
@@ -269,7 +294,9 @@ export function PaymentTransferModal({
                     <Check className="h-8 w-8 text-green-600 dark:text-green-400" />
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2">Transfer Successful!</h3>
+                <Label as="h3" className="text-xl font-bold mb-2">
+                  Transfer Successful!
+                </Label>
                 <p className="text-gray-600 dark:text-gray-400 mb-6">
                   ${parseFloat(transferAmount).toFixed(2)} has been sent to your{" "}
                   {modalPaymentMethod.toLowerCase()}.

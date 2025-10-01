@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ChevronDown, Globe } from "lucide-react";
+import { Label } from "./Label";
 
 interface DesktopNavigationProps {
   paymentSolutionsCategories: any[];
@@ -36,9 +37,12 @@ export const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
                   {paymentSolutionsCategories.map((category, idx) => (
                     <div key={idx} className="space-y-4">
                       <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
-                        <h3 className="font-semibold text-gray-900 dark:text-white">
+                        <Label
+                          as="h3"
+                          className="font-semibold text-gray-900 dark:text-white"
+                        >
                           {category.title}
-                        </h3>
+                        </Label>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
                           {category.description}
                         </p>
@@ -64,9 +68,12 @@ export const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
                                   </div>
                                 </div>
                                 <div>
-                                  <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
+                                  <Label
+                                    as="h4"
+                                    className="font-medium text-gray-900 dark:text-gray-100 mb-1"
+                                  >
                                     {item.title}
-                                  </h4>
+                                  </Label>
                                   <p className="text-sm text-gray-600 dark:text-gray-400">
                                     {item.description}
                                   </p>

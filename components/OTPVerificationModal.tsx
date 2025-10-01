@@ -4,6 +4,7 @@ import React from "react";
 import { X, KeyRound, ArrowRight } from "lucide-react";
 import { cn } from "../lib/utils";
 import Link from "next/link";
+import { Label } from "./Label";
 
 interface OTPVerificationModalProps {
   otp: string;
@@ -32,7 +33,9 @@ export const OTPVerificationModal: React.FC<OTPVerificationModalProps> = ({
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
             <KeyRound className="h-6 w-6 text-blue-600" />
-            <h3 className="text-xl font-bold">Verify Identity</h3>
+            <Label as="h3" className="text-xl font-bold">
+              Verify Identity
+            </Label>
           </div>
           <button
             onClick={onClose}
@@ -98,7 +101,7 @@ export const OTPVerificationModal: React.FC<OTPVerificationModalProps> = ({
               checked={acceptedTerms}
               onChange={(e) => setAcceptedTerms(e.target.checked)}
             />
-            <label htmlFor="terms">
+            <Label as="label" htmlFor="terms">
               I accept the{" "}
               <Link
                 href="https://juicefin.com/wp-content/uploads/2024/10/CLL-09272024-001.pdf"
@@ -108,7 +111,7 @@ export const OTPVerificationModal: React.FC<OTPVerificationModalProps> = ({
               >
                 Cardholder Terms & Conditions
               </Link>
-            </label>
+            </Label>
           </div>
         </div>
       </div>
