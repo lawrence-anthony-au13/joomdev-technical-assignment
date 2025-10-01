@@ -1,6 +1,7 @@
 import React from "react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import Link from "next/link";
+import { footerLinks } from "../data/pageHelpContent";
+import { FooterLink } from "./FooterLink";
 
 export function Footer() {
   return (
@@ -20,38 +21,9 @@ export function Footer() {
               <p className="text-sm mb-4">
                 For customer service please call Juice: (855)-687-2114.
               </p>
-              <div className="flex items-center justify-center gap-4 text-sm">
-                <Link
-                  href="/privacy"
-                  className="hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Privacy Policy
-                </Link>
-                <span className="text-gray-400 dark:text-gray-600">|</span>
 
-                <Link
-                  href="/legal"
-                  className="hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Terms of Service
-                </Link>
-                <span className="text-gray-400 dark:text-gray-600">|</span>
+              <FooterLink links={footerLinks} />
 
-                <Link
-                  href="/cookie-policy"
-                  className="hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Cookie Policy
-                </Link>
-                <span className="text-gray-400 dark:text-gray-600">|</span>
-
-                <Link
-                  href="/sitemap"
-                  className="hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Sitemap
-                </Link>
-              </div>
               <p className="text-sm mt-4">
                 © 2025 Juice Financial. All rights reserved. Juice Insurance
                 v1.3.0
