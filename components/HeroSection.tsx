@@ -17,16 +17,10 @@ export const HeroSection = () => {
           priority
         />
       </div>
-      <Label
-        as="h1"
-        className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600"
-      >
+      <Label as="h1" variant="heroH1">
         Claims Wallet Max
       </Label>
-      <Label
-        as="p"
-        className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
-      >
+      <Label as="p" variant="heroPara">
         Access your funds instantly and choose how you want to receive your
         payment. Enhanced features with maximum flexibility.
       </Label>

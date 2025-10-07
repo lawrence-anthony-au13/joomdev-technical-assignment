@@ -46,7 +46,7 @@ export const VirtualCard: React.FC<VirtualCardProps> = ({ onSelect }) => {
           <div className="p-2 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
             <CreditCard className="h-6 w-6" />
           </div>
-          <Label as="h3" className="text-xl font-bold">
+          <Label as="h3" variant="extraLargeBold">
             Virtual Mastercard
           </Label>
           <div className="ml-auto">

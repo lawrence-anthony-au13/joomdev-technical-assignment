@@ -64,7 +64,7 @@ export function PaymentTransferModal({
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
                     <Wallet className="h-6 w-6 text-blue-600" />
-                    <Label as="h3" className="text-xl font-bold">
+                    <Label as="h3" variant="extraLargeBold">
                       {transferInProgress
                         ? "Processing..."
                         : `Transfer to ${modalPaymentMethod}`}
@@ -113,10 +113,7 @@ export function PaymentTransferModal({
                     </div>
 
                     <div className="mb-6">
-                      <Label
-                        as="label"
-                        className="block text-sm font-medium mb-2"
-                      >
+                      <Label as="label" variant="label">
                         Transfer Amount
                       </Label>
                       <div className="relative">
@@ -139,10 +136,7 @@ export function PaymentTransferModal({
                     {modalPaymentMethod === paymentMethods[2].name && (
                       <div className="space-y-4 mb-6">
                         <div>
-                          <Label
-                            as="label"
-                            className="block text-sm font-medium mb-2"
-                          >
+                          <Label as="label" variant="label">
                             Bank Name
                           </Label>
                           <input
@@ -153,10 +147,7 @@ export function PaymentTransferModal({
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <Label
-                              as="label"
-                              className="block text-sm font-medium mb-2"
-                            >
+                            <Label as="label" variant="label">
                               Routing Number
                             </Label>
                             <input
@@ -166,10 +157,7 @@ export function PaymentTransferModal({
                             />
                           </div>
                           <div>
-                            <Label
-                              as="label"
-                              className="block text-sm font-medium mb-2"
-                            >
+                            <Label as="label" variant="label">
                               Account Number
                             </Label>
                             <input
@@ -185,10 +173,7 @@ export function PaymentTransferModal({
                     {modalPaymentMethod === paymentMethods[1].name && (
                       <div className="space-y-4 mb-6">
                         <div>
-                          <Label
-                            as="label"
-                            className="block text-sm font-medium mb-2"
-                          >
+                          <Label as="label" variant="label">
                             Card Number
                           </Label>
                           <input
@@ -199,10 +184,7 @@ export function PaymentTransferModal({
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <Label
-                              as="label"
-                              className="block text-sm font-medium mb-2"
-                            >
+                            <Label as="label" variant="label">
                               Expiration Date
                             </Label>
                             <input
@@ -212,10 +194,7 @@ export function PaymentTransferModal({
                             />
                           </div>
                           <div>
-                            <Label
-                              as="label"
-                              className="block text-sm font-medium mb-2"
-                            >
+                            <Label as="label" variant="label">
                               Zip Code
                             </Label>
                             <input
@@ -231,10 +210,7 @@ export function PaymentTransferModal({
                     {modalPaymentMethod === paymentMethods[3].name && (
                       <div className="space-y-4 mb-6">
                         <div>
-                          <Label
-                            as="label"
-                            className="block text-sm font-medium mb-2"
-                          >
+                          <Label as="label" variant="label">
                             Mailing Address
                           </Label>
                           <textarea
@@ -268,10 +244,7 @@ export function PaymentTransferModal({
                     {/* Debug field here */}
                     {process.env.NODE_ENV !== "production" && (
                       <div className="mb-6 border border-red-400 p-3 rounded-lg bg-red-50">
-                        <Label
-                          as="label"
-                          className="block text-sm font-medium mb-2 text-red-600"
-                        >
+                        <Label as="label" className="redLabel">
                           ⚠️ Test Field (Debug Only – Will Not Appear in
                           Production)
                         </Label>
@@ -315,7 +288,7 @@ export function PaymentTransferModal({
                     <Check className="h-8 w-8 text-green-600 dark:text-green-400" />
                   </div>
                 </div>
-                <Label as="h3" className="text-xl font-bold mb-2">
+                <Label as="h3" variant="extraLargeBoldMargin">
                   Transfer Successful!
                 </Label>
                 <p className="text-gray-600 dark:text-gray-400 mb-6">

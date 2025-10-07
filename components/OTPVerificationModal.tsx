@@ -33,7 +33,7 @@ export const OTPVerificationModal: React.FC<OTPVerificationModalProps> = ({
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
             <KeyRound className="h-6 w-6 text-blue-600" />
-            <Label as="h3" className="text-xl font-bold">
+            <Label as="h3" variant="extraLargeBold">
               Verify Identity
             </Label>
           </div>

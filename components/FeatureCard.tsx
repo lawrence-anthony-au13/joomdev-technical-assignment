@@ -24,7 +24,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
       >
         <Icon className="h-6 w-6" />
       </div>
-      <Label as="h3" className="text-lg font-semibold mb-2">
+      <Label as="h3" variant="h3Large">
         {title}
       </Label>
       <p className="text-gray-600 dark:text-gray-400">{description}</p>

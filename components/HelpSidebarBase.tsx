@@ -230,7 +230,7 @@ export function HelpSidebarBase({
             >
               <div className="flex items-center gap-2">
                 <HelpCircle className="h-5 w-5 text-blue-600" />
-                <Label as="h2" className="text-lg font-semibold">
+                <Label as="h2" variant="largeSemiBold">
                   Help & Information
                 </Label>
               </div>
@@ -268,7 +268,7 @@ export function HelpSidebarBase({
               variants={contentVariants}
             >
               <motion.div className="mb-6" variants={itemVariants}>
-                <Label as="h3" className="text-xl font-bold mb-2">
+                <Label as="h3" variant="extraLargeBoldMargin">
                   {content.title}
                 </Label>
                 <p className="text-gray-600 dark:text-gray-400">
@@ -283,10 +283,7 @@ export function HelpSidebarBase({
                     className="mb-8"
                     variants={itemVariants}
                   >
-                    <Label
-                      as="h4"
-                      className="text-lg font-semibold mb-3 text-blue-600 dark:text-blue-400"
-                    >
+                    <Label as="h4" variant="largeBlue">
                       {section.title}
                     </Label>
                     <div className="space-y-4">
@@ -296,12 +293,12 @@ export function HelpSidebarBase({
                           className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg"
                           variants={itemVariants}
                         >
-                          <Label as="h5" className="font-medium mb-2">
+                          <Label as="h5" variant="label">
                             {item.title}
                           </Label>
-                          <p className="text-gray-600 dark:text-gray-400 text-sm">
+                          <Label as="p" variant="paraGray">
                             {item.description}
-                          </p>
+                          </Label>
                         </motion.div>
                       ))}
                     </div>
@@ -316,13 +313,10 @@ export function HelpSidebarBase({
                       className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg"
                       variants={itemVariants}
                     >
-                      <Label as="h4" className="font-medium mb-2">
+                      <Label as="h4" className="label">
                         {feature.title}
                       </Label>
-                      <Label
-                        as="p"
-                        className="text-gray-600 dark:text-gray-400 text-sm"
-                      >
+                      <Label as="p" variant="paraGray">
                         {feature.description}
                       </Label>
                     </motion.div>
