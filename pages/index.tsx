@@ -147,7 +147,7 @@ export default function ClaimsWalletMax() {
             initial="hidden"
             animate="visible"
           >
-            <Label as="h2" className="text-2xl font-bold mb-8 text-center">
+            <Label as="h2" variant="boldCenter">
               Select Payment Method
             </Label>
 
@@ -175,14 +175,11 @@ export default function ClaimsWalletMax() {
                       >
                         <method.icon className="h-5 w-5" />
                       </div>
-                      <Label as="h3" className="font-bold">
+                      <Label as="h3" variant="bold">
                         {method.name}
                       </Label>
                     </div>
-                    <Label
-                      as="p"
-                      className="text-gray-600 dark:text-gray-400 text-sm"
-                    >
+                    <Label as="p" variant="paraGray">
                       {method.description}
                     </Label>
                     <div className="mt-auto flex items-center justify-between">

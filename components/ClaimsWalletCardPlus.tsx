@@ -31,10 +31,10 @@ export function ClaimsWalletCardPlus({
         <div className="flex items-center gap-3">
           <Wallet className="h-10 w-10" />
           <div>
-            <Label as="h2" className="text-3xl font-bold">
+            <Label as="h2" variant="h2Bold">
               Your Claims Wallet
             </Label>
-            <Label as="p" className="text-white/80">
+            <Label as="p" variant="pWhite80">
               Claim #{claimNumber}
             </Label>
           </div>

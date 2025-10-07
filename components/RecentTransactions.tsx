@@ -14,7 +14,7 @@ export const RecentTransactions: React.FC<RecentTransactionsProps> = ({
   return (
     <div className="max-w-5xl mx-auto mb-16">
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-        <Label as="h2" className="text-2xl font-bold mb-6">
+        <Label as="h2" variant="extraXLBold">
           Recent Transactions
         </Label>
 
